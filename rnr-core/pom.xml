@@ -47,4 +47,14 @@
       </resource>
     </resources>
   </build>
+
+  <profiles>
+    <profile>
+      <id>qa</id>
+      <properties>
+        <db.username>ppla</db.username>
+        <db.password>ppla</db.password>
+      </properties>
+    </profile>
+  </profiles>
 </project>

@@ -10,6 +10,11 @@
 
   <artifactId>rnr-app</artifactId>
   <name>Rooms and Resistors :: WebApp</name>
+  <packaging>war</packaging>
+
+  <properties>
+    <packageExcludePattern>%regex[WEB-INF/lib/(?!(rnr|baldy)).*\.jar]</packageExcludePattern>
+  </properties>
 
   <dependencies>
     <!-- Individual modules -->
@@ -37,4 +42,20 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <packagingExcludes>${packageExcludePattern}</packagingExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
